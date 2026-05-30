@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altaf Khan - My Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --dark: #0e0e0e;
+      --cream: #f5f0e8;
+      --mid: #1a1a1a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.3s, color 0.3s;
+    }
+
+    nav ul a:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      animation: fadeDown 0.8s ease forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.6;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201,168,76,0.35);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ABOUT */
+    .section {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text p {
+      opacity: 0.65;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    .about-img {
+      aspect-ratio: 1;
+      background: var(--mid);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border: 1px solid rgba(201,168,76,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+    }
+
+    /* SKILLS */
+    .skills-bg {
+      background: var(--mid);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .skill-card {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 8px;
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .skill-icon { font-size: 2rem; margin-bottom: 12px; }
+    .skill-card h3 { font-size: 1rem; margin-bottom: 6px; }
+    .skill-card p { font-size: 0.8rem; opacity: 0.5; line-height: 1.5; }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--mid);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      padding: 60px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .contact-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p { opacity: 0.55; margin-bottom: 30px; }
+
+    .contact-email {
+      color: var(--gold);
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      padding-bottom: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.3;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { max-width: 250px; margin: 0 auto; }
+      .contact-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">AK</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">✦ Welcome to my website</div>
+      <h1>Altaf <span>Khan</span></h1>
+      <p>Yeh meri personal testing website hai. Yahan main apna kaam, skills aur contact share karta hoon.</p>
+      <a href="#about" class="btn">Aage Dekhein →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Mere Baare Mein</div>
+        <h2>Main Kaun Hoon?</h2>
+        <p>Main Altaf Khan hoon. Yeh meri pehli website hai jo maine GitHub par upload ki hai.</p>
+        <p>Main web development seekh raha hoon aur yeh mera pehla qadam hai apni online presence banane ka.</p>
+        <a href="#contact" class="btn" style="margin-top:10px;">Sampark Karein</a>
+      </div>
+      <div class="about-img">👨‍💻</div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <div class="skills-bg" id="skills">
+    <div class="section">
+      <div class="section-label">Meri Skills</div>
+      <h2>Main Kya Kar Sakta Hoon?</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Web Development</h3>
+          <p>HTML, CSS aur basic web pages banana</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📱</div>
+          <h3>Mobile Friendly</h3>
+          <p>Mobile par bhi acha dikhne wali websites</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <h3>Design</h3>
+          <p>Sundar aur attractive design banana</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🚀</div>
+          <h3>GitHub</h3>
+          <p>Code upload aur manage karna</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-label">Sampark</div>
+    <h2>Baat Karein</h2>
+    <div class="contact-box">
+      <h3>Mujhse Milein 👋</h3>
+      <p>Koi bhi sawaal ya kaam ke liye neeche email karein</p>
+      <a href="mailto:altafkhan01788@gmail.com" class="contact-email">
+        altafkhan01788@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Altaf Khan — Sab Haqooq Mahfooz Hain</p>
+  </footer>
+
+</body>
+</html>
